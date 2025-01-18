@@ -21,9 +21,6 @@ app.use(morgan("dev"));
 app.use(helmet());
 app.use(cookieParser());
 
-// Connect to MongoDB
-connectDB();
-
 // Routes
 app.use("/api", router);
 
@@ -36,6 +33,7 @@ app.use((req, res, next) => {
 
 // Start the Server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
     console.log(`Server running on http://localhost:${PORT}`);
+    await connectDB();
 });
