@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code-Based Food Calorie Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #77aaff 3px solid;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header ul {
+            padding: 0;
+            list-style: none;
+        }
+        header li {
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+        .main {
+            padding: 20px;
+            background: #fff;
+            margin-top: 20px;
+        }
+        .main h1 {
+            text-align: center;
+        }
+        .main h2 {
+            color: #333;
+        }
+        .main pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>QR Code-Based Food Calorie Calculator</h1>
+            <nav>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#api-endpoints">API Endpoints</a></li>
+                    <li><a href="#sample-data">Sample Data</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container main">
+        <section id="features">
+            <h2>Features</h2>
+            <h3>Frontend (React.js):</h3>
+            <ul>
+                <li>QR Code Scanning</li>
+                <li>Dynamic Calorie Calculation</li>
+                <li>User-Friendly Interface</li>
+            </ul>
+            <h3>Backend (Node.js + MongoDB):</h3>
+            <ul>
+                <li>CRUD APIs</li>
+                <li>Calorie Calculation</li>
+                <li>Scalable Architecture</li>
+            </ul>
+        </section>
+
+        <section id="api-endpoints">
+            <h2>API Endpoints</h2>
+            <h3>User Routes:</h3>
+            <pre>
+| Method | Endpoint                   | Description                        | Authentication |
+|--------|----------------------------|------------------------------------|----------------|
+| POST   | api/user/register          | Register a new user                | No             |
+| POST   | api/user/login             | Login a user                       | No             |
+| GET    | api/user/logout            | Logout a user                      | No             |
+| GET    | api/user/profile           | Get user profile                   | Yes            |
+| POST   | api/user/save-dish/:dishId | Save a dish to user profile        | Yes            |
+| DELETE | api/user/save-dish/:dishId | Remove a saved dish from user profile | Yes         |
+            </pre>
+            <h3>Dish Routes:</h3>
+            <pre>
+| Method | Endpoint         | Description              | Authentication |
+|--------|------------------|--------------------------|----------------|
+| GET    | api/dishes/      | Get all dishes           | No             |
+| GET    | api/dishes/:id   | Get a specific dish by ID| No             |
+| POST   | api/dishes/      | Create a new dish        | Yes            |
+| PUT    | api/dishes/:id   | Update a dish by ID      | Yes            |
+| DELETE | api/dishes/:id   | Delete a dish by ID      | Yes            |
+            </pre>
+        </section>
+
+        <section id="sample-data">
+            <h2>Sample Data</h2>
+            <h3>Dish Example:</h3>
+            <pre>
+{
+  "dishName": "Idli Vada Combo",
+  "items": [
+    { "name": "Idli", "calories": 100, "defaultQuantity": 2 },
+    { "name": "Vada", "calories": 200, "defaultQuantity": 1 },
+    { "name": "Sambhar", "calories": 120, "defaultQuantity": 1 },
+    { "name": "Chutney", "calories": 80, "defaultQuantity": 1 }
+  ]
+}
+            </pre>
+            <h3>Constituent Example:</h3>
+            <pre>
+{
+  "name": "Idli",
+  "calories": 100
+}
+            </pre>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 QR Code-Based Food Calorie Calculator</p>
+    </footer>
+</body>
+</html>

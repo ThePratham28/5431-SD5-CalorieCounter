@@ -4,6 +4,7 @@ import morgan from "morgan";
 import cors from "cors";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
+import path from "path";
 
 import connectDB from "./src/config/db.js";
 import router from "./src/routes/index.js";
@@ -21,6 +22,13 @@ app.use(morgan("dev"));
 app.use(helmet());
 app.use(cookieParser());
 
+// Serve static files
+app.use(express.static(path.join(path.resolve(), "public")));
+
+app.get("/", (req, res) => {
+    res.sendFile(path.join(path.resolve(), "src/public", "index.html"));
+});
+
 // Routes
 app.use("/api", router);
 
@@ -29,6 +37,14 @@ app.use((req, res, next) => {
     const error = new Error(`Not Found - ${req.originalUrl}`);
     res.status(404);
     next(error);
+});
+
+app.use((error, req, res, next) => {
+    res.status(error.status || 500);
+    res.json({
+        message: error.message,
+        error: process.env.NODE_ENV === "development" ? error : {},
+    });
 });
 
 // Start the Server
